@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{F41F3035-EC0A-4F35-8E87-0E95DB201346}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PizzaBox.Storing/Databases/ApplicationDbContext.cs">
+    <Files>
+      <File FileName="PizzaBox.Client/Program.cs" Line="42" Column="1" />
+      <File FileName="PizzaBox.Storing/Repositories/GenericAccountRepository.cs" Line="1" Column="1" />
+      <File FileName="PizzaBox.Storing/Databases/ApplicationDbContext.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PizzaBox" expanded="True">
+            <Node name="PizzaBox.Client" expanded="True" />
+            <Node name="PizzaBox.Storing" expanded="True">
+              <Node name="Databases" expanded="True">
+                <Node name="ApplicationDbContext.cs" selected="True" />
+              </Node>
+              <Node name="Repositories" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="PizzaBox" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.PizzaBox.Client PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
