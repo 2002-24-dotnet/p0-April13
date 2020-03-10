@@ -24,7 +24,6 @@ namespace PizzaBox.Storing.Databases
     {
       return this.Set<TEntity>();
     }
-    
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -35,7 +34,7 @@ namespace PizzaBox.Storing.Databases
     {
       builder.Entity<Crust>().HasKey(c => c.Id);
       builder.Entity<Pizza>().HasKey(p => p.Id);
-      builder.Entity<PizzaTopping>().HasKey(pt => new { pt.PizzaId, pt.ToppingId });
+      builder.Entity<PizzaTopping>().HasKey(pt => pt.Id);
       builder.Entity<Size>().HasKey(s => s.Id);
       builder.Entity<Topping>().HasKey(t => t.Id);
       builder.Entity<User>().HasKey(u => u.Id);
@@ -45,8 +44,9 @@ namespace PizzaBox.Storing.Databases
       builder.Entity<Crust>().HasMany(c => c.Pizzas).WithOne(p => p.Crust);
       builder.Entity<Size>().HasMany(s => s.Pizzas).WithOne(p => p.Size);
 
-      builder.Entity<Pizza>().HasMany(p => p.PizzaToppings).WithOne(pt => pt.Pizza).HasForeignKey(pt => pt.PizzaId);
-      builder.Entity<Topping>().HasMany(t => t.PizzaToppings).WithOne(pt => pt.Topping).HasForeignKey(pt => pt.ToppingId);
+
+      builder.Entity<Pizza>().HasMany(p => p.PizzaToppings).WithOne(pt => pt.Pizza);
+      builder.Entity<Topping>().HasMany(t => t.PizzaToppings).WithOne(pt => pt.Topping);
 
       builder.Entity<Store>().HasMany(st => st.Orders).WithOne(o => o.Store);
       builder.Entity<User>().HasMany(u => u.Orders).WithOne(o => o.User);
@@ -73,9 +73,16 @@ namespace PizzaBox.Storing.Databases
 
       builder.Entity<Topping>().HasData(new Topping[]
       {
-        new Topping() { Name = "Cheese", Price = 0.25M },
-        new Topping() { Name = "Pepperoni", Price = 0.50M },
-        new Topping() { Name = "Tomato Sauce", Price = 0.75M },
+        new Topping() { Name = "Cheese", Price = 0.50M },
+        new Topping() { Name = "Pepperoni", Price = 0.75M },
+        new Topping() { Name = "Tomato Sauce", Price = 0.50M },
+        new Topping() { Name = "Marinara Sauce", Price = 0.50M },
+        new Topping() { Name = "Alfredo Sauce", Price = 0.50M },
+        new Topping() { Name = "Italian Sausage", Price = 0.75M },
+        new Topping() { Name = "Olives", Price = 0.50M },
+        new Topping() { Name = "Pineapple", Price = 0.50M },
+        new Topping() { Name = "Green Peppers", Price = 0.50M },
+        new Topping() { Name = "Spinach", Price = 0.50M }
       });
     }
   }

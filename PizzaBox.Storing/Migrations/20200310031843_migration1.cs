@@ -153,24 +153,26 @@ namespace PizzaBox.Storing.Migrations
                 name: "PizzaTopping",
                 columns: table => new
                 {
-                    PizzaId = table.Column<long>(nullable: false),
-                    ToppingId = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ToppingId = table.Column<long>(nullable: true),
+                    PizzaId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PizzaTopping", x => new { x.PizzaId, x.ToppingId });
+                    table.PrimaryKey("PK_PizzaTopping", x => x.Id);
                     table.ForeignKey(
                         name: "FK_PizzaTopping_Pizza_PizzaId",
                         column: x => x.PizzaId,
                         principalTable: "Pizza",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PizzaTopping_Topping_ToppingId",
                         column: x => x.ToppingId,
                         principalTable: "Topping",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -178,9 +180,9 @@ namespace PizzaBox.Storing.Migrations
                 columns: new[] { "Id", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 7304143L, "Deep Dish", 3.50m },
-                    { 65737292L, "New York Style", 2.50m },
-                    { 54764719L, "Thin Crust", 1.50m }
+                    { 13543581L, "Deep Dish", 3.50m },
+                    { 54783372L, "New York Style", 2.50m },
+                    { 23288300L, "Thin Crust", 1.50m }
                 });
 
             migrationBuilder.InsertData(
@@ -188,9 +190,9 @@ namespace PizzaBox.Storing.Migrations
                 columns: new[] { "Id", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 23120425L, "Large", 12.00m },
-                    { 6757235L, "Medium", 10.00m },
-                    { 60815118L, "Small", 8.00m }
+                    { 8268111L, "Large", 12.00m },
+                    { 7304143L, "Medium", 10.00m },
+                    { 65737292L, "Small", 8.00m }
                 });
 
             migrationBuilder.InsertData(
@@ -198,9 +200,16 @@ namespace PizzaBox.Storing.Migrations
                 columns: new[] { "Id", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 10465156L, "Cheese", 0.25m },
-                    { 27077540L, "Pepperoni", 0.50m },
-                    { 42371273L, "Tomato Sauce", 0.75m }
+                    { 54764719L, "Cheese", 0.50m },
+                    { 23120425L, "Pepperoni", 0.75m },
+                    { 6757235L, "Tomato Sauce", 0.50m },
+                    { 60815118L, "Marinara Sauce", 0.50m },
+                    { 10465156L, "Alfredo Sauce", 0.50m },
+                    { 27077540L, "Italian Sausage", 0.75m },
+                    { 42371273L, "Olives", 0.50m },
+                    { 45797138L, "Pineapple", 0.50m },
+                    { 9521066L, "Green Peppers", 0.50m },
+                    { 18580737L, "Spinach", 0.50m }
                 });
 
             migrationBuilder.CreateIndex(
@@ -232,6 +241,11 @@ namespace PizzaBox.Storing.Migrations
                 name: "IX_Pizza_ToppingId",
                 table: "Pizza",
                 column: "ToppingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PizzaTopping_PizzaId",
+                table: "PizzaTopping",
+                column: "PizzaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PizzaTopping_ToppingId",

@@ -39,19 +39,19 @@ namespace PizzaBox.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 7304143L,
+                            Id = 13543581L,
                             Name = "Deep Dish",
                             Price = 3.50m
                         },
                         new
                         {
-                            Id = 65737292L,
+                            Id = 54783372L,
                             Name = "New York Style",
                             Price = 2.50m
                         },
                         new
                         {
-                            Id = 54764719L,
+                            Id = 23288300L,
                             Name = "Thin Crust",
                             Price = 1.50m
                         });
@@ -116,13 +116,20 @@ namespace PizzaBox.Storing.Migrations
 
             modelBuilder.Entity("PizzaBox.Domain.Models.PizzaTopping", b =>
                 {
-                    b.Property<long>("PizzaId")
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("PizzaId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("ToppingId")
+                    b.Property<long?>("ToppingId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("PizzaId", "ToppingId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("PizzaId");
 
                     b.HasIndex("ToppingId");
 
@@ -149,19 +156,19 @@ namespace PizzaBox.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 23120425L,
+                            Id = 8268111L,
                             Name = "Large",
                             Price = 12.00m
                         },
                         new
                         {
-                            Id = 6757235L,
+                            Id = 7304143L,
                             Name = "Medium",
                             Price = 10.00m
                         },
                         new
                         {
-                            Id = 60815118L,
+                            Id = 65737292L,
                             Name = "Small",
                             Price = 8.00m
                         });
@@ -214,21 +221,63 @@ namespace PizzaBox.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 10465156L,
+                            Id = 54764719L,
                             Name = "Cheese",
-                            Price = 0.25m
-                        },
-                        new
-                        {
-                            Id = 27077540L,
-                            Name = "Pepperoni",
                             Price = 0.50m
                         },
                         new
                         {
-                            Id = 42371273L,
-                            Name = "Tomato Sauce",
+                            Id = 23120425L,
+                            Name = "Pepperoni",
                             Price = 0.75m
+                        },
+                        new
+                        {
+                            Id = 6757235L,
+                            Name = "Tomato Sauce",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 60815118L,
+                            Name = "Marinara Sauce",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 10465156L,
+                            Name = "Alfredo Sauce",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 27077540L,
+                            Name = "Italian Sausage",
+                            Price = 0.75m
+                        },
+                        new
+                        {
+                            Id = 42371273L,
+                            Name = "Olives",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 45797138L,
+                            Name = "Pineapple",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 9521066L,
+                            Name = "Green Peppers",
+                            Price = 0.50m
+                        },
+                        new
+                        {
+                            Id = 18580737L,
+                            Name = "Spinach",
+                            Price = 0.50m
                         });
                 });
 
@@ -293,15 +342,11 @@ namespace PizzaBox.Storing.Migrations
                 {
                     b.HasOne("PizzaBox.Domain.Models.Pizza", "Pizza")
                         .WithMany("PizzaToppings")
-                        .HasForeignKey("PizzaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PizzaId");
 
                     b.HasOne("PizzaBox.Domain.Models.Topping", "Topping")
                         .WithMany("PizzaToppings")
-                        .HasForeignKey("ToppingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ToppingId");
                 });
 #pragma warning restore 612, 618
         }

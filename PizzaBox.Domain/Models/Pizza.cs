@@ -38,7 +38,7 @@ namespace PizzaBox.Domain.Models
 
     public override string ToString()
     {
-      return $"{Id} {Name ?? "N/A"} {Price} {Crust.Name ?? "N/A"} {Size.Name ?? "N/A"} {PizzaToppings.Count}";
+      return $"{Name ?? "N/A"} {Price} {Crust.Name ?? "N/A"} {Size.Name ?? "N/A"} with {PizzaToppings.Count} ";
     }
   }
 }

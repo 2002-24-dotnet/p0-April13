@@ -28,7 +28,6 @@ namespace PizzaBox.Storing.Repositories
 
     public bool Post(Pizza pizza)
     {
-      _db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Pizza ON");
       _db.Pizza.Add(pizza);
       return _db.SaveChanges() == 1;
     }

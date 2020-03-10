@@ -13,5 +13,9 @@ namespace PizzaBox.Domain.Models
     {
       // Id = this.GetHashCode();
     }
+    public override string ToString()
+    {
+      return $"{Name ?? "N/A"} {Address ?? "N/A"} {PhoneNumber ?? "N/A"}";
+    }
   }
 }

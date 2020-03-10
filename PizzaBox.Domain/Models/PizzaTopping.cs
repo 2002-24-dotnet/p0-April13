@@ -1,13 +1,19 @@
 using System;
+using System.Collections.Generic;
 using PizzaBox.Domain.Abstracts;
+using PizzaBox.Domain.Interfaces;
 
 namespace PizzaBox.Domain.Models
 {
-  public class PizzaTopping
+  public class PizzaTopping : IEntity
   {
-    public long PizzaId { get; set; }
-    public Pizza Pizza { get; set; }
-    public long ToppingId { get; set; }
+
+    #region NAVIGATIONAL PROPERTIES
+    
     public Topping Topping { get; set; }
+    public Pizza Pizza { get; set; }
+
+    #endregion
+    public long Id { get; set; }
   }
 }
