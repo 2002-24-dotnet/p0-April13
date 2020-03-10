@@ -26,7 +26,7 @@ namespace PizzaBox.Client.Singletons
       bool logout = false;
       do
       {
-        Console.Write("Enter 1, 2, or 3: ");
+        Console.Write("Enter 1, or 2: ");
         string input = Console.ReadLine();
         input = input.Replace(" ", "");
 
@@ -38,6 +38,8 @@ namespace PizzaBox.Client.Singletons
             break;
           case "2":
             logout = true;
+            break;
+            default:
             break;
         }
         if (!Valid)
