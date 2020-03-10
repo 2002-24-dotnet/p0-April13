@@ -18,7 +18,7 @@ namespace PizzaBox.Storing.Repositories
 
     public List<Order> GetAll()
     {
-      return _db.Order.Include(o => o.User).Include(o => o.Store).ToList();
+      return _db.Order.Include(o => o.User).Include(o => o.Store).Include(o => o.Pizzas).ToList();
     }
 
     public Order Get(long id)
