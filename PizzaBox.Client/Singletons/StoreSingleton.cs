@@ -53,7 +53,7 @@ namespace PizzaBox.Client.Singletons
       decimal total = 0;
       foreach (var o in orders)
       {
-        if (o.User.Equals(StoreRepository.Get(AccountId)))
+        if (o.Store.Id.Equals(AccountId))
         {
           Console.WriteLine(o.date.ToString() + " " + o.Pizzas.Count + " Pizzas for " + o.Price);
           total += o.Price;

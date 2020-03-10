@@ -92,7 +92,7 @@ namespace PizzaBox.Client.Singletons
       var orders = OrderRepo.GetAll();
       foreach (var o in orders)
       {
-        if (o.User.Equals(UserRepository.Get(AccountId)))
+        if (o.User.Id.Equals(AccountId))
         {
           Console.WriteLine(o.date.ToString() + " " + o.Pizzas.Count + " Pizzas for " + o.Price);
         }
